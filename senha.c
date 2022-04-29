@@ -8,7 +8,10 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+
+
 int main() {
+    int max_tentativas = 3;
     int senha_correta = 1234;  // senha fake
 
     int senha_digitada;
@@ -17,7 +20,7 @@ int main() {
 
     int n_tentativas = 0;
 
-    while (n_tentativas < 3) {
+    while (1) {
         n_tentativas = n_tentativas + 1;
 
         scanf("%d", &senha_digitada); 
@@ -31,10 +34,11 @@ int main() {
             // senha digitada INcorretamente!
             printf("\nSenha incorreta!\n");
             
-	    if (n_tentativas < 3) {
+	    if (n_tentativas < max_tentativas) {
                 printf("Digite novamente: ");
             } else {
                 printf("Conta bloqueada!!!!");
+                break;
             } 
         }
     }
