@@ -11,7 +11,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-void cadastrar_senha() {
+int cadastrar_senha() {
     while (1) {  // loop infinito
 
         printf("\nDigite sua nova senha: ");
@@ -40,13 +40,48 @@ void cadastrar_senha() {
         }
 
         printf("\nSenha cadastrada com sucesso!!!");
-        break;
-    }
+        return nova_senha; 
+
+    } // fim do while
+}
+
+void logar_usuario(int senha_exigida) {
+    int max_tentativas = 3;
+
+    int senha_digitada;
+
+    printf("\nDigite a senha: ");
+
+    int n_tentativas = 0;
+
+    while (1) {
+        n_tentativas = n_tentativas + 1;
+
+        scanf("%d", &senha_digitada); 
+
+        if (senha_digitada == senha_exigida) {
+            // senha digitada corretamente!
+            printf("\nOk, usuário logado!\n");
+            break;
+        
+        } else {           
+            // senha digitada INcorretamente!
+            printf("\nSenha incorreta!\n");
+            
+	    if (n_tentativas < max_tentativas) {
+                printf("Digite novamente: ");
+            } else {
+                printf("Conta bloqueada!!!!");
+                break;
+            } 
+        }
+    }    
 }
 
 
 int main() {
-    cadastrar_senha();
+    int senha_cadastrada = cadastrar_senha();
+    logar_usuario(senha_cadastrada);
 
     printf("\nFim!\n\n");
   
