@@ -18,24 +18,18 @@ char eh_primo(int x) {
 
 
 int main() {
-    while (1) {
-        printf("\nDigite um inteiro positivo: ");
-        int numero;
-        scanf("%d", &numero);
+    printf("\nDigite um inteiro positivo: ");
+    int limite;
+    scanf("%d", &limite);
 
-        if (numero < 1) {
-            break;         
-        }
- 
-        char resultado = eh_primo(numero);
-        if (resultado == 1) {
-            printf("\nO numero %d eh primo!\n", 
-                numero);
-        } else {
-            printf("\nO numero %d NAO eh primo!\n",
-                numero);  
+    int numero;
+    for (numero = 2; numero <= limite; numero++) {
+        if (eh_primo(numero)) {
+            printf("\n%d", numero); 
         }
     }
    
+    printf("\n\n");
+
     return 0;
 }
