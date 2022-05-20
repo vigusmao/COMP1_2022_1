@@ -41,11 +41,9 @@ void armarios(int n) {
     int crianca;
     for (crianca=1; crianca<=n; crianca++) {
         // ...altere os armários que são múltiplos
-        for (a=1; a<=n; a++) {
-            if (a%crianca==0) {
-                // é múltiplo, então altera o estado
-                estados[a] = 1 - estados[a];
-            }             
+        for (a=crianca; a<=n; a+=crianca) {
+             // é múltiplo, então altera o estado
+             estados[a] = 1 - estados[a];                       
         }
     }
 
