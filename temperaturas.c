@@ -23,11 +23,62 @@
    Então o chamador criaria, digamos, variáveis max, min, media,
    e passaria os ENDEREÇOS dessas variáveis para a função.
    A função calcularia o que ela precisaria calcular e escreveria
-   os valores obtidos naqueles ESDEREÇOS passados, ficando
+   os valores obtidos naqueles ENDEREÇOS passados, ficando
    portanto visíveis para o chamador.
 */
 
 #include <stdio.h>
+
+void analisar_temperaturas(float array_temps[], int n, 
+                           float* min, float* max, float* media) {
+
+    float maior = array_temps[0];
+    float menor = array_temps[0];
+    float soma = 0;
+
+    int i;
+    for (i=0; i<n; i++) {
+        float temp = array_temps[i];
+        if (temp > maior) {
+            maior = temp;
+        }
+        if (temp < menor) {
+            menor = temp;
+        }
+        soma += temp;
+    }
+    
+    *media = soma / n;
+    *min = menor;
+    *max = maior; 
+}
+
+
+int main() {
+
+    float temperaturas[4];
+    temperaturas[0] = 40.3;
+    temperaturas[1] = 12.5;
+    temperaturas[2] = 31.9;
+    temperaturas[3] = 5.2;
+
+
+    float min, max, media;
+    analisar_temperaturas(temperaturas, 4, &min, &max, &media);
+
+    printf("\nmin=%.2f, max=%.2f, media=%.2f", min, max, media);
+    
+    printf("\n\n");
+    return 0;
+}
+
+                            
+    
+ 
+
+ 
+
+
 
 
 

@@ -26,13 +26,15 @@
 #include <math.h>
 
 void armarios(int n) {
-   int a;
-   for (a=1; a<=n; a++) {
-       int raiz = (int) sqrt(a);
-       if (a == raiz * raiz) {
-           // é quadrado perfeito! imprima!
-           printf("\n%d", a);
+   int b;
+   for (b=1; b<=n; b++) {
+       int armario = b*b;
+       if (armario > n) {
+           break;
        }
+       // é quadrado perfeito! imprima!
+       printf("\n%d", armario);
+       
    }
 }
 
