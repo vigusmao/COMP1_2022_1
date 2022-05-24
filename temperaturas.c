@@ -28,8 +28,9 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 
-void analisar_temperaturas(float array_temps[], int n, 
+void analisar_temperaturas(float* array_temps, int n, 
                            float* min, float* max, float* media) {
 
     float maior = array_temps[0];
@@ -51,22 +52,40 @@ void analisar_temperaturas(float array_temps[], int n,
     *media = soma / n;
     *min = menor;
     *max = maior; 
+
+    array_temps[1] = 88888.8;
+}
+
+void imprimir_array(float array[], int n) {
+    int i;
+    printf("%.2f ", array[0]);
+    for (i=1; i<n; i++) {
+        printf("%.2f", array[i]);
+        if (i<n-1) {
+            printf(", ");
+        }
+    }
 }
 
 
 int main() {
 
-    float temperaturas[4];
+    float* temperaturas = (float*) malloc(4 * sizeof(float));
     temperaturas[0] = 40.3;
     temperaturas[1] = 12.5;
     temperaturas[2] = 31.9;
     temperaturas[3] = 5.2;
 
-
     float min, max, media;
+
+    imprimir_array(temperaturas, 4);
+ 
     analisar_temperaturas(temperaturas, 4, &min, &max, &media);
 
     printf("\nmin=%.2f, max=%.2f, media=%.2f", min, max, media);
+
+    printf("\n");
+    imprimir_array(temperaturas, 4);
     
     printf("\n\n");
     return 0;
